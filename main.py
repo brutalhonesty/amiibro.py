@@ -49,7 +49,9 @@ def _print_item(item, type):
     print '========================'
 
 
-def _print_store(store):
+def _print_store(store, type):
+    print type
+    print '-------------------------'
     print 'Store name: ' + str(store['name'])
     print 'Store address: ' + str(store['address'])
     print 'Store address 2: ' + str(store['address2'])
@@ -58,6 +60,7 @@ def _print_store(store):
     print 'Zipcode: ' + str(store['zipcode'])
     print Fore.BLUE + 'Phone: ' + str(store['phone']) + Fore.RESET
     print 'Hours: ' + str(store['hours'])
+    print 'Distance: ' + str(store['miles']) + ' miles'
     print '========================'
 
 
@@ -70,7 +73,7 @@ def _check_data(data, type):
             stores = data['stores']
             for store in stores:
                 if store['inStoreAvailability'] is True:
-                    _print_store(store)
+                    _print_store(store, type)
 
 
 def _check_availability(amiibos):
