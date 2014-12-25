@@ -25,6 +25,10 @@ $ ./main.py -n samus -z 30096
 # Give radius as well (in miles)
 $ ./main.py -n samus -z 30096 -r 100
 
+# Specify the retailer(s)
+$ ./main.py -n samus -z 30096 -r 100 -s gamestop walmart
+
+
 # Print out the Amiibo names and their SKUs
 $ ./main.py -nn
 ```
