@@ -93,18 +93,20 @@ def _check_availability(amiibos):
 
 def main():
     if args.names:
-        BASE_URL = 'https://amiibro.herokuapp.com/api/amiibos'
+        BASE_URL = 'http://amiibro.com/api/amiibos/identifiers'
         req = get(BASE_URL)
         amiibos = req.json()
         _print_amiibos(amiibos)
     else:
-        BASE_URL = 'https://amiibro.herokuapp.com/api/amiibos/status'
+        BASE_URL = 'http://amiibro.com/api/amiibos/status'
         params = {'name': args.name, 'zip': args.zipcode, 'radius': args.radius}
         req = get(BASE_URL, params=params)
         if req.status_code == 200:
             _check_availability(req.json())
         else:
             print req.json()['message']
+            if(req.json()['names']):
+                print 'Allowed names: ' + ', '.join(req.json()['names'])
 
 if __name__ == "__main__":
     main()
